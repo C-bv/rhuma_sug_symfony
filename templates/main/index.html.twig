@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} 
-    {{parent()}} - Rhum
+{% block title %}
+	{{parent()}}
+	- Rums
+{% endblock %}
+
+{% block section %}
+	<section id="product_section"></section>
+{% endblock %}
+
+{% block product_carousel %}
+	{% include "/template_parts/_product_slider.html.twig" %}
 {% endblock %}
 
 {% block body %}
-    <h1>Rhum</h1>
-    {% block section %}
-        <section id="product_section"></section>
-    {% endblock %}
+	<script type="module" src="js/modules/_rum.js"></script>
 {% endblock %}

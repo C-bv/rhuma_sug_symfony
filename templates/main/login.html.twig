@@ -1,36 +1,33 @@
-<?php include_once SCRIPTS . "/login.php" ?>
-<main>
-    <aside>
-        <div id="logos_container">
-            <img src="<?= IMG ?>/logo.png" alt="Rhuma Sug">
-            <div class="since_date">Since 1969</div>
-        </div>
-    </aside>
-    <article>
-        <?php include TEMPLATE_PARTS . '/_nav.php' ?>
-        <section id="account_section">
-            <h1>Log In</h1>
-            <div id="form_container">
-                <form id="login_form" action="" method="post" autocomplete="off">
-                    <div>
-                        <input type="text" name="emailClient" placeholder="Email" value="<?php echo $emailClient; ?>">
-                        <div class="invalid_input fade_in"><?= $emailClientErr; ?></div>
-                    </div>
-                    <div>
-                        <input type="password" name="mdpClient" placeholder="Password">
-                        <div class="invalid_input fade_in"><?= $mdpClientErr; ?></div>
-                    </div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="contactChoice1" name="contact">
-                        <label for="contactChoice1">Remember me</label>
-                    </div>
-                    <input type="submit" name="login" id="login_input" value="Login">
-                    <div>or</div>
-                    <a id="sign_up_button" href="register">Sign Up</a>
-                    <a href="blank">Forgot your password ?</a>
-                </form>
-            </div>
-        </section>
-    </article>
-</main>
-<div id="for_background"></div>
+{# <?php include_once SCRIPTS . "/login.php" ?> #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Login
+{% endblock %}
+
+{% block section %}
+	<section id="account_section">
+		<h1>Log In</h1>
+		<div id="form_container">
+			<form id="login_form" action="" method="post" autocomplete="off">
+				<div>
+					<input type="text" name="emailClient" placeholder="Email" value="<?php echo $emailClient; ?>">
+					<div class="invalid_input fade_in"><?= $emailClientErr; ?></div>
+				</div>
+				<div>
+					<input type="password" name="mdpClient" placeholder="Password">
+					<div class="invalid_input fade_in"><?= $mdpClientErr; ?></div>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" id="contactChoice1" name="contact">
+					<label for="contactChoice1">Remember me</label>
+				</div>
+				<input type="submit" name="login" id="login_input" value="Login">
+				<div>or</div>
+				<a id="sign_up_button" href="register">Sign Up</a>
+				<a href="blank">Forgot your password ?</a>
+			</form>
+		</div>
+	</section>
+{% endblock %}

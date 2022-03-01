@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} 
-    {{parent()}} - Can sugars
+{% block title %}
+	{{parent()}}
+	- Can sugars
+{% endblock %}
+
+{% block section %}
+	<section id="product_section"></section>
+{% endblock %}
+
+{% block product_carousel %}
+	{% include "/template_parts/_product_slider.html.twig" %}
 {% endblock %}
 
 {% block body %}
-    <h1>Sucres</h1>
-    {% block section %}<section id="product_section"></section>{% endblock %}
-    <script type="module" src="js/modules/_canSugar.js"></script>
+	<script type="module" src="js/modules/_canSugar.js"></script>
 {% endblock %}

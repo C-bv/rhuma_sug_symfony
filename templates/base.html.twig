@@ -21,14 +21,14 @@
         {% endblock %}
     </head>
 	<body>
-		{% block body %}{% endblock %}
+        {% include "/template_parts/_video_loader.html.twig" %}
 		<main>
 			<aside>
 				<div id="logos_container">
 					<img src="img/logo.png" alt="Rhuma Sug">
 					<div class="since_date">Since 1969</div>
 				</div>
-		        {% include "/template_parts/_product_slider.html.twig" %}
+		        {% block product_carousel %}{% endblock %}
 			</aside>
 			<article>
 		        {% include "/template_parts/_nav.html.twig" %}
@@ -36,5 +36,6 @@
 			</article>
 		</main>
 		<div id="for_background"></div>
+		{% block body %}{% endblock %}
 	</body>
 </html>
