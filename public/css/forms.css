@@ -1,0 +1,228 @@
+@import url("https://pro.fontawesome.com/releases/v5.15.4/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+:root {
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  color: #FFF;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+form > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+form input[type=text],
+form input[type=number],
+form input[type=email],
+form input[type=password],
+form input[type=tel] {
+  height: 25px;
+  background-color: #1A1B1E;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #E7A140;
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: 300;
+  z-index: 2;
+}
+form input[type=submit],
+form #sign_up_button,
+form #edit_button,
+form #cancel_button {
+  height: 40px;
+  background-color: #E7A140;
+  color: #FFF;
+  border: 2px solid #E7A140;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 250ms ease;
+}
+form input[type=submit]:hover,
+form #sign_up_button:hover,
+form #edit_button:hover,
+form #cancel_button:hover {
+  transform: scale(1.1);
+}
+form #login_input {
+  border-color: #D47700 !important;
+  background-color: #D47700 !important;
+}
+form .invalid_input {
+  top: 39px;
+  font-size: 0.8rem;
+  position: absolute;
+  color: rgba(255, 0, 0, 0.75);
+}
+
+#form_container {
+  width: 300px;
+  font-family: "Roboto", sans-serif;
+}
+
+#login_form .checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+#login_form div:nth-child(5) {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+#login_form div:nth-child(5)::before, #login_form div:nth-child(5)::after {
+  content: "";
+  border-bottom: solid 1px #E7A140;
+  width: 45%;
+}
+#login_form #sign_up_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+#login_form a:nth-child(7) {
+  align-self: flex-end;
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#sign_up_form > span {
+  align-self: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+#sign_up_form > span a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #D47700;
+}
+
+#form_container2 {
+  position: relative;
+  width: 75%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+#form_container2 #account_form {
+  width: 100%;
+}
+#form_container2 #account_form > div {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+#form_container2 #account_form > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: -webkit-fill-available;
+  gap: 2px;
+}
+#form_container2 #account_form > div #edit_buttons_container {
+  flex-direction: row;
+  gap: 10px;
+  width: auto;
+}
+#form_container2 #account_form > div #edit_buttons_container > * {
+  height: auto;
+  padding: 2px 5px;
+}
+#form_container2 #account_form > div #edit_buttons_container #cancel_button {
+  color: rgba(255, 0, 0, 0.75);
+  background-color: transparent;
+  border: 1px solid rgba(255, 0, 0, 0.75);
+}
+#form_container2 #account_form > div #edit_buttons_container #cancel_button:hover {
+  color: #fff;
+  background-color: rgba(255, 0, 0, 0.75);
+}
+#form_container2 #account_form #change_password_button {
+  width: auto !important;
+  align-self: center;
+  color: #FFF;
+  background-color: #E7A140;
+  border: 2px solid #E7A140;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  transition: transform 250ms ease;
+  cursor: pointer;
+}
+#form_container2 #account_form #change_password_button:hover {
+  transform: scale(1.1);
+}
+#form_container2 .invalid_input {
+  top: 60px;
+  font-size: 0.8rem;
+  position: absolute;
+  color: red;
+}
+#form_container2 #password_change_modal {
+  display: none;
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  background-color: #1A1B1E;
+  border: 1px solid #E7A140;
+  border-radius: 2px;
+  z-index: 2;
+}
+#form_container2 #password_change_modal form {
+  align-items: center;
+}
+#form_container2 #password_change_modal form > div:not(div:nth-child(1)) {
+  width: 80%;
+}
+#form_container2 #password_change_modal form > div:nth-child(1) {
+  width: 100%;
+  align-items: center;
+}
+#form_container2 #password_change_modal form > div:nth-child(1) > div:nth-child(2) {
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+#form_container2 #password_change_modal form > div:nth-child(1) > div:nth-child(2)::after {
+  content: "";
+  height: 2px;
+  width: 25px;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  background-color: #E7A140;
+}
+#form_container2 #password_change_modal #close_modal_button {
+  align-self: flex-end;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 250ms ease;
+}
+#form_container2 #password_change_modal #close_modal_button:hover {
+  transform: scale(1.2);
+  color: #D47700;
+}
+#form_container2 #password_change_modal #close_modal_button i {
+  font-size: 1.5rem;
+}/*# sourceMappingURL=forms.css.map */

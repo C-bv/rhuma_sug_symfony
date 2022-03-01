@@ -1,0 +1,38 @@
+<?php include_once SCRIPTS . "/register.php" ?>
+<main>
+    <aside>
+        <div id="logos_container">
+            <img src="<?= IMG ?>/logo.png" alt="Rhuma Sug">
+            <div class="since_date">Since 1969</div>
+        </div>
+    </aside>
+    <article>
+        <?php include TEMPLATE_PARTS . '/_nav.php' ?>
+        <section id="account_section">
+            <h1>Register</h1>
+            <div id="form_container">
+                <form id="sign_up_form" action="" method="post" autocomplete="off">
+                    <div>
+                        <input type="text" name="nomClient" placeholder="Last Name" value="<?= hex2bin($nomClient); ?>">
+                        <div class="invalid_input fade_in"><?= $nomClientErr; ?></div>
+                    </div>
+                    <div>
+                        <input type="text" name="prenomClient" placeholder="First Name" value="<?= hex2bin($prenomClient); ?>">
+                        <div class="invalid_input fade_in"><?= $prenomClientErr; ?></div>
+                    </div>
+                    <div>
+                        <input type="text" name="emailClient" placeholder="Email" value="<?= hex2bin($emailClient); ?>">
+                        <div class="invalid_input fade_in"><?= $emailClientErr; ?></div>
+                    </div>
+                    <div>
+                        <input type="password" name="mdpClient" placeholder="Password">
+                        <div class="invalid_input fade_in"><?= $mdpClientErr; ?></div>
+                    </div>
+                    <input type="submit" name="signup" class="login_input" value="Sign up">
+                    <span>Already a member ? <a href="login">Log In</a></span>
+                </form>
+            </div>
+        </section>
+    </article>
+</main>
+<div id="for_background"></div>

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {{parent()}} - About us
+{% endblock %}
+
+{% block body %}
+    {% block section %}
+         <section id="article_section">
+            <h1>About us</h1>
+            <div class="all_articles_container"></div>
+        </section>
+    {% endblock %}
+    <script type="module" src="js/modules/_articles.js"></script>
+{% endblock %}

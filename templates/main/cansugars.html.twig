@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {{parent()}} - Can sugars
+{% endblock %}
+
+{% block body %}
+    <h1>Sucres</h1>
+    {% block section %}<section id="product_section"></section>{% endblock %}
+    <script type="module" src="js/modules/_canSugar.js"></script>
+{% endblock %}

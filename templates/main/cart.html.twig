@@ -1,0 +1,19 @@
+{# {% include "cart.php" %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {{parent()}} - Cart
+{% endblock %}
+
+{% block body %}
+    {% block section %}
+         <section id="cart_section">
+            <h1>Cart</h1>
+            <form id="cart_form" method="post" autocomplete="off">
+                <input type="submit" name="validate_cart" value="Validate">
+            </form>
+        </section>
+    {% endblock %}
+    <script type="module" src="js/modules/_cart.js"></script>
+{% endblock %}

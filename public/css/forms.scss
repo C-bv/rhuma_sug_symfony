@@ -1,0 +1,256 @@
+@import "config";
+
+// ALL FORMS STYLE
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    >div{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"]{
+        height: 25px;
+        background-color: $secondaryBackgroundColor;
+        color: rgb(255 255 255 / 50%);
+        border: 1px solid $secondaryColor;
+        border-radius: 2px;
+        padding: 5px;
+        font-weight: 300;
+        z-index: 2;
+    }
+
+    input[type="submit"],
+    #sign_up_button,
+    #edit_button,
+    #cancel_button{
+        height: 40px;
+        background-color: $secondaryColor;
+        color: #FFF;
+        border: 2px solid $secondaryColor;
+        border-radius: 2px;
+        text-transform: uppercase;
+        font-family: $tertiaryFont;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 250ms ease;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+
+    #login_input{
+        border-color: $primaryColor !important;
+        background-color: $primaryColor !important;
+    }
+
+    .invalid_input{
+        top: 39px;
+        font-size: 0.8rem;
+        position: absolute;
+        color: rgba(255, 0, 0, 0.75);
+    }
+}
+
+// LOGIN / REGISTER FORMS
+#form_container{
+    width: 300px;
+    font-family: $tertiaryFont;
+}
+
+// LOGIN FORM
+#login_form{
+
+    .checkbox{
+        flex-direction: row !important;
+        align-items: center;
+        gap: 2px;
+        font-size: 0.8rem;
+        color: rgb(255 255 255 / 50%);
+    }
+
+    div:nth-child(5){
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+        color: rgb(255 255 255 / 50%);
+    
+        &::before, &::after{
+            content: '';
+            border-bottom: solid 1px $secondaryColor;
+            width: 45%;
+        }
+    }
+
+    #sign_up_button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    a:nth-child(7){
+        align-self: flex-end;
+        text-decoration: none;
+        font-size: 0.8rem;
+        color: rgb(255 255 255 / 50%);
+    }
+}
+
+// REGISTER FORM
+#sign_up_form{
+
+    >span{
+        align-self: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        
+        a{
+            font-weight: bold;
+            text-decoration: none;
+            color: $primaryColor;
+        }
+    }
+}
+
+// ACCOUNT FORM
+#form_container2{
+    position: relative;
+    width: 75%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $tertiaryFont;
+
+    #account_form{
+        width: 100%;
+
+        >div{
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+            
+            >div{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: -webkit-fill-available;
+                gap: 2px;
+            }
+
+            #edit_buttons_container{
+                flex-direction: row;
+                gap: 10px;
+                width: auto;
+
+                >*{
+                    height: auto;
+                    padding: 2px 5px;
+                }
+
+                #cancel_button{
+                    color: rgba(255, 0, 0, 0.75);
+                    background-color: transparent ;
+                    border: 1px solid rgba(255, 0, 0, 0.75);
+
+                    &:hover{
+                        color: #fff;
+                        background-color: rgba(255, 0, 0, 0.75);
+                    }
+                }
+            }
+        }
+
+        #change_password_button{
+            width: auto !important;
+            align-self: center;
+            color: #FFF;
+            background-color: $secondaryColor;
+            border: 2px solid $secondaryColor;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            transition: transform 250ms ease;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+    .invalid_input{
+        top: 60px;
+        font-size: 0.8rem;
+        position: absolute;
+        color: red;
+    }
+    
+    #password_change_modal{
+        display: none;
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        padding: 10px;
+        background-color: $secondaryBackgroundColor;
+        border: 1px solid $secondaryColor;
+        border-radius: 2px;
+        z-index: 2;
+        
+        form{
+            align-items: center;
+
+            >div:not(div:nth-child(1)){
+                width: 80%;
+            }
+
+            >div:nth-child(1){
+                width: 100%;
+                align-items: center;
+
+                >div:nth-child(2){
+                    position: relative;
+                    font-family: "Oswald", sans-serif;
+                    font-size: 1.2rem;
+                    text-transform: uppercase;
+
+                    &::after{
+                        content: "";
+                        height: 2px;
+                        width: 25px;
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        background-color: $secondaryColor;
+                    }
+                }
+            }
+        }
+        #close_modal_button{
+            align-self: flex-end;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 250ms ease;
+
+            &:hover{
+                transform: scale(1.2);
+                color: $primaryColor;
+            }
+
+            i{
+                font-size: 1.5rem;  
+            }
+        }
+    }
+}

@@ -2,18 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="img/favicon.ico">
+        <title>{% block title %}Rhuma Sug{% endblock %}</title>
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {# {{ encore_entry_link_tags('app') }} #}
+            <link rel="stylesheet" href="css/config.css">
+            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="css/animation.css">
+            <link rel="stylesheet" href="css/forms.css">
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {# {{ encore_entry_script_tags('app') }} #}
+            <script type="module" src="js/main.js" defer></script>
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	<body>
+		{% block body %}{% endblock %}
+		<main>
+			<aside>
+				<div id="logos_container">
+					<img src="img/logo.png" alt="Rhuma Sug">
+					<div class="since_date">Since 1969</div>
+				</div>
+		        {% include "/template_parts/_product_slider.html.twig" %}
+			</aside>
+			<article>
+		        {% include "/template_parts/_nav.html.twig" %}
+                {% block section %}{% endblock %}
+			</article>
+		</main>
+		<div id="for_background"></div>
+	</body>
 </html>
