@@ -48,19 +48,17 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/login', name: 'app_login')]
-    public function login(): Response
-    {
-        return $this->render('main/login.html.twig', [
-            
-        ]);
-    }
-
     #[Route('/register', name: 'app_register')]
     public function register(): Response
     {
         return $this->render('main/register.html.twig', [
             
         ]);
+    }
+
+    #[Route('/logout', name: 'app_logout',methods: ['GET'])]
+    public function logout()
+    {
+        // controller can be blank: it will never be called!
     }
 }
