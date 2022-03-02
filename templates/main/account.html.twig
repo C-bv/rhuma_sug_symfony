@@ -5,7 +5,11 @@
 	- Account
 {% endblock %}
 
+
 {% block section %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>Email: {{ app.user.email }}</p>
+{% endif %}
 	<section id="account_section">
 		<h1>Account</h1>
 		<div id="form_container2">
