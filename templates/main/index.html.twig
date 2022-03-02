@@ -6,7 +6,18 @@
 {% endblock %}
 
 {% block section %}
-	<section id="product_section"></section>
+	<section id="product_section">
+		{% for product in products %}
+			<div class="product_container">
+				<div>{{ product.nom }}</div>
+				<div>{{ product.nom }}</div>
+				<div>{{ product.description }}</div>
+				<div>{{ product.prix }}</div>
+				<div>{{ product.nom }}</div>
+			</div>
+		{% endfor %}
+	</section>
+
 {% endblock %}
 
 {% block product_carousel %}
@@ -14,5 +25,6 @@
 {% endblock %}
 
 {% block body %}
+	<script type="module" src="js/classes/Product.js"></script>
 	<script type="module" src="js/modules/_rum.js"></script>
 {% endblock %}

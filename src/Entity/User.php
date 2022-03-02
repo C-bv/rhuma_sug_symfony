@@ -139,18 +139,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddresse(): ?string
-    {
-        return $this->addresse;
-    }
-
-    public function setAddresse(string $addresse): self
-    {
-        $this->addresse = $addresse;
-
-        return $this;
-    }
-
     public function getAdresse(): ?string
     {
         return $this->adresse;

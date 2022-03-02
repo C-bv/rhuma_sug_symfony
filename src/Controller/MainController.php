@@ -5,14 +5,30 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Product;
+use Doctrine\Persistence\ManagerRegistry;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function home(): Response
+    public function home(ManagerRegistry $doctrine): Response
     {
+        $products = $doctrine->getRepository(Product::class)->findBy(
+            ['categorie' => 1]
+        );
+
+        if (!$products) {
+            throw $this->createNotFoundException(
+                'No product found'
+            );
+        }
+        $response = new Response(json_encode($products));
+        $response->headers->set('Content-Type', 'application/json');
+
+        // return $response;
+
         return $this->render('main/index.html.twig', [
-            
+            'products' => $products,
         ]);
     }
 
