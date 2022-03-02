@@ -1,0 +1,5 @@
+{% block form_errors %}
+          {% for error in errors %}
+                <div class="invalid_input fade_in">{{ error.message }}</div>
+          {% endfor %}
+{% endblock %}

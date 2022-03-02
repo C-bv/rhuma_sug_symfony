@@ -77,13 +77,13 @@ form .invalid_input {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
-#login_form div:nth-child(5) {
+#login_form div:nth-child(4) {
   flex-direction: row !important;
   justify-content: space-between;
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
 }
-#login_form div:nth-child(5)::before, #login_form div:nth-child(5)::after {
+#login_form div:nth-child(4)::before, #login_form div:nth-child(4)::after {
   content: "";
   border-bottom: solid 1px #E7A140;
   width: 45%;
@@ -94,19 +94,19 @@ form .invalid_input {
   align-items: center;
   text-decoration: none;
 }
-#login_form a:nth-child(7) {
+#login_form a:nth-child(6) {
   align-self: flex-end;
   text-decoration: none;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
-#sign_up_form > span {
+#registration_form > span {
   align-self: center;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
-#sign_up_form > span a {
+#registration_form > span a {
   font-weight: bold;
   text-decoration: none;
   color: #D47700;

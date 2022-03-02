@@ -78,7 +78,7 @@ form{
         color: rgb(255 255 255 / 50%);
     }
 
-    div:nth-child(5){
+    div:nth-child(4){
         flex-direction: row !important;
         justify-content: space-between;
         align-items: center;
@@ -98,7 +98,7 @@ form{
         text-decoration: none;
     }
     
-    a:nth-child(7){
+    a:nth-child(6){
         align-self: flex-end;
         text-decoration: none;
         font-size: 0.8rem;
@@ -107,7 +107,7 @@ form{
 }
 
 // REGISTER FORM
-#sign_up_form{
+#registration_form{
 
     >span{
         align-self: center;
