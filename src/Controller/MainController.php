@@ -56,20 +56,4 @@ class MainController extends AbstractController
             
         ]);
     }
-
-    #[Route('/account', name: 'app_account')]
-    public function account(): Response
-    {
-        return $this->render('main/account.html.twig', [
-            
-        ]);
-    }
-
-    // #[Route('/register', name: 'app_register')]
-    // public function register(): Response
-    // {
-    //     return $this->render('main/register.html.twig', [
-            
-    //     ]);
-    // }
 }

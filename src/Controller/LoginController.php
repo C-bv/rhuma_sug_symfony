@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Controller;
+// namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+// use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginController extends AbstractController
-{
-    #[Route('/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+// class LoginController extends AbstractController
+// {
+//     #[Route('/login', name: 'app_login')]
+//     public function login(AuthenticationUtils $authenticationUtils): Response
+//     {
+//         // get the login error if there is one
+//         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+//         // last username entered by the user
+//         $lastUsername = $authenticationUtils->getLastUsername();
 
-        if($this->getUser()) {
-            return $this->redirectToRoute('app_account');
-        }       
-        return $this->render('login/login.html.twig', [
-            'lastUsername' =>  $lastUsername,
-            'error' => $error,
-        ]);
-    }
-}
+//         if($this->getUser()) {
+//             return $this->redirectToRoute('app_account');
+//         }       
+//         return $this->render('login/login.html.twig', [
+//             'lastUsername' =>  $lastUsername,
+//             'error' => $error,
+//         ]);
+//     }
+// }
