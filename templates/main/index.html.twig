@@ -9,15 +9,14 @@
 	<section id="product_section">
 		{% for product in products %}
 			<div class="product_container">
-				<div>{{ product.nom }}</div>
-				<div>{{ product.nom }}</div>
-				<div>{{ product.description }}</div>
-				<div>{{ product.prix }}</div>
-				<div>{{ product.nom }}</div>
+				<div class="slide_delay4">{{ product.id }}</div>
+				<div class="slide_delay1">{{ product.nom }}</div>
+				<div class="slide_delay2">{{ product.description }}</div>
+				<div class="slide_delay3">{{ product.prix }} €</div>
+				<button class="add_to_cart_button{{ product.id }}">Add to cart</button>
 			</div>
 		{% endfor %}
 	</section>
-
 {% endblock %}
 
 {% block product_carousel %}
@@ -25,6 +24,5 @@
 {% endblock %}
 
 {% block body %}
-	<script type="module" src="js/classes/Product.js"></script>
 	<script type="module" src="js/modules/_rum.js"></script>
 {% endblock %}

@@ -5,46 +5,47 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Product;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Product;
+use App\Repository\ProductRepository;
+use App\Entity\Article;
+use App\Repository\ArticleRepository;
+use App\Entity\User;
+use App\Repository\UserRepository;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function home(ManagerRegistry $doctrine): Response
+    public function rums(ProductRepository $productRepository): Response
     {
-        $products = $doctrine->getRepository(Product::class)->findBy(
+        $products = $productRepository->findBy(
             ['categorie' => 1]
         );
 
-        if (!$products) {
-            throw $this->createNotFoundException(
-                'No product found'
-            );
-        }
-        $response = new Response(json_encode($products));
-        $response->headers->set('Content-Type', 'application/json');
-
-        // return $response;
-
         return $this->render('main/index.html.twig', [
-            'products' => $products,
+            'products' => $products
         ]);
     }
 
     #[Route('/cansugars', name: 'app_cansugars')]
-    public function cansugars(): Response
+    public function cansugars(ProductRepository $productRepository): Response
     {
+        $products = $productRepository->findBy(
+            ['categorie' => 2]
+        );
+
         return $this->render('main/cansugars.html.twig', [
-            
+            'products' => $products
         ]);
     }
 
     #[Route('/about', name: 'app_about')]
-    public function about(): Response
+    public function articles(ArticleRepository $articleRepository): Response
     {
+        $articles = $articleRepository->findAll();
+
         return $this->render('main/aboutus.html.twig', [
-            
+            'articles' => $articles
         ]);
     }
 
@@ -64,11 +65,11 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/register', name: 'app_register')]
-    public function register(): Response
-    {
-        return $this->render('main/register.html.twig', [
+    // #[Route('/register', name: 'app_register')]
+    // public function register(): Response
+    // {
+    //     return $this->render('main/register.html.twig', [
             
-        ]);
-    }
+    //     ]);
+    // }
 }

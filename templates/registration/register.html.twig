@@ -11,26 +11,27 @@
 		<div id="form_container">
 			{% form_theme registrationForm 'form/form_errors.html.twig' %}
 			{{ form_start(registrationForm, {'attr': {'id': 'registration_form'}}) }}
-			<div>
-				{{ form_widget(registrationForm.nom) }}
-				{{ form_errors(registrationForm.nom) }}
-			</div>
-			<div>
-				{{ form_widget(registrationForm.prenom) }}
-				{{ form_errors(registrationForm.prenom) }}
-			</div>
-			<div>
-				{{ form_widget(registrationForm.email) }}
-				{{ form_errors(registrationForm.email) }}
-			</div>
-			<div>
-				{{ form_widget(registrationForm.plainPassword) }}
-				{{ form_errors(registrationForm.plainPassword) }}
-			</div>
-			<input type="submit" class="btn"></input>
-		<span>Already a member ?
-			<a href="login">Log In</a>
-		</span>
-		{{ form_end(registrationForm) }}
-	</div>
-</section>{% endblock %}
+				<div>
+					{{ form_widget(registrationForm.nom) }}
+					{{ form_errors(registrationForm.nom) }}
+				</div>
+				<div>
+					{{ form_widget(registrationForm.prenom) }}
+					{{ form_errors(registrationForm.prenom) }}
+				</div>
+				<div>
+					{{ form_widget(registrationForm.email) }}
+					{{ form_errors(registrationForm.email) }}
+				</div>
+				<div>
+					{{ form_widget(registrationForm.plainPassword) }}
+					{{ form_errors(registrationForm.plainPassword) }}
+				</div>
+				<input type="submit" class="btn"></input>
+				<span>Already a member ?
+					<a href="login">Log In</a>
+				</span>
+			{{ form_end(registrationForm) }}
+		</div>
+	</section>
+{% endblock %}

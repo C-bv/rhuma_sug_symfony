@@ -6,11 +6,10 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -41,6 +40,29 @@ class RegistrationController extends AbstractController
         }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+        ]);
+    }
+    #[Route("/account/{id}/edit", name: 'app_account_edit')]
+    public function edit(User $user, Request $request, EntityManagerInterface $entityManager)
+    {        
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Article Updated! Inaccuracies squashed!');
+
+            return $this->redirectToRoute('app_account', [
+                'id' => $user->getId(),
+            ]);
+        }
+        return $this->render('main/account.html.twig', [
+            'users' => $user,
+            'registrationForm' => $form->createView()
         ]);
     }
 }

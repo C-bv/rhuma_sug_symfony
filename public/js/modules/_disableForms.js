@@ -4,6 +4,10 @@ export default function disableForm(){
         accountFormInputs = accountForm.querySelectorAll("input"),
         editButtonsContainer = accountForm.querySelector("#edit_buttons_container"),
         editButton = editButtonsContainer.querySelector("#edit_button");
+
+    accountFormInputs.forEach(element => {
+        element.disabled = true;
+    });
     
     editButton.addEventListener("click", function(){
 
@@ -11,9 +15,7 @@ export default function disableForm(){
             cancelEdits = document.createElement("button");
             
         validateEdits.setAttribute("type", "submit");
-        validateEdits.setAttribute("value", "Validate changes");
-        validateEdits.setAttribute("name", "submit_changes");
-        cancelEdits.id = "cancel_button"
+        cancelEdits.id = "cancel_button";
         cancelEdits.innerText = "Cancel";
 
         cancelEdits.addEventListener("click", function(){

@@ -76,6 +76,11 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            // If user log...
+            ->add('tel')
+            ->add('adresse')
+            ->add('ville')
+            ->add('cp')
         ;
     }
 

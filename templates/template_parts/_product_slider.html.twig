@@ -1,4 +1,9 @@
 <div id="carousel_container" class="slide_delay3">
-    <div id="carousel_img_container">
-    </div>
+	<div id="carousel_img_container">
+		{% for product in products %}
+				<div>
+                    <img src="{{ product.img }}" alt="">
+                </div>
+		{% endfor %}
+	</div>
 </div>

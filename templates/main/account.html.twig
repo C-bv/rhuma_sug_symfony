@@ -5,15 +5,14 @@
 	- Account
 {% endblock %}
 
-
 {% block section %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <p>Email: {{ app.user.email }}</p>
-{% endif %}
-	<section id="account_section">
-		<h1>Account</h1>
-		<div id="form_container2">
-			<form id="account_form" action="" method="post" autocomplete="off">
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<section id="account_section">
+			<h1>Account</h1>
+			<div id="form_container2">
+			{% form_theme registrationForm 'form/form_errors.html.twig' %}
+
+				{{ form_start(registrationForm, {'attr': {'id': 'account_form'}}) }}
 				<div>
 					<div>User Information</div>
 					<div id="edit_buttons_container">
@@ -22,26 +21,42 @@
 				</div>
 				<div>
 					<div>
-						<label for="nomClient">Last name</label>
-						<input type="text" name="nomClient" disabled>
-						<div class="invalid_input fade_in"><?= $nomClientErr; ?></div>
+						{{ form_label(registrationForm.nom, 'Last name') }}
+						{{ form_widget(registrationForm.nom, 
+							{'attr': 
+								{'value': app.user.nom }
+							}) 
+						}}
+						{{ form_errors(registrationForm.nom) }}
 					</div>
 					<div>
-						<label for="prenomClient">First name</label>
-						<input type="text" name="prenomClient" disabled>
-						<div class="invalid_input fade_in"><?= $prenomClientErr; ?></div>
+						{{ form_label(registrationForm.prenom, 'First name') }}
+						{{ form_widget(registrationForm.prenom, 
+							{'attr': 
+								{'value': app.user.prenom }
+							}) 
+						}}
+						{{ form_errors(registrationForm.prenom) }}
 					</div>
 				</div>
 				<div>
 					<div>
-						<label for="emailClient">Email Address</label>
-						<input type="text" name="emailClient" disabled>
-						<div class="invalid_input fade_in"><?= $emailClientErr; ?></div>
+						{{ form_label(registrationForm.email, 'Email Address') }}
+						{{ form_widget(registrationForm.email, 
+							{'attr': 
+								{'value': app.user.email }
+							}) 
+						}}
+						{{ form_errors(registrationForm.email) }}
 					</div>
 					<div>
-						<label for="telClient">Phone Number</label>
-						<input type="tel" name="telClient" disabled>
-						<div class="invalid_input fade_in"><?= $telClientErr; ?></div>
+						{{ form_label(registrationForm.tel, 'Phone Number') }}
+						{{ form_widget(registrationForm.tel, 
+							{'attr': 
+								{'value': app.user.tel }
+							}) 
+						}}
+						{{ form_errors(registrationForm.tel) }}
 					</div>
 				</div>
 				<div id="change_password_button">Change pass</div>
@@ -50,49 +65,63 @@
 				</div>
 				<div>
 					<div>
-						<label for="addresseClient">Address</label>
-						<input type="text" name="addresseClient" disabled>
-						<div class="invalid_input fade_in"><?= $addresseClientErr; ?></div>
+						{{ form_label(registrationForm.adresse, 'Address') }}
+						{{ form_widget(registrationForm.adresse, 
+							{'attr': 
+								{'value': app.user.adresse }
+							}) 
+						}}
+						{{ form_errors(registrationForm.adresse) }}
 					</div>
 				</div>
 				<div>
 					<div>
-						<label for="villeClient">City</label>
-						<input type="text" name="villeClient" disabled>
-						<div class="invalid_input fade_in"><?= $villeClientErr; ?></div>
+						{{ form_label(registrationForm.ville, 'City') }}
+						{{ form_widget(registrationForm.ville, 
+							{'attr': 
+								{'value': app.user.ville }
+							}) 
+						}}
+						{{ form_errors(registrationForm.ville) }}
 					</div>
 					<div>
-						<label for="cpClient">Postal Code</label>
-						<input type="text" name="cpClient" disabled>
-						<div class="invalid_input fade_in"><?= $cpClientErr; ?></div>
+						{{ form_label(registrationForm.cp, 'Postal Code') }}
+						{{ form_widget(registrationForm.cp, 
+							{'attr': 
+								{'value': app.user.cp }
+							}) 
+						}}
+						{{ form_errors(registrationForm.cp) }}
 					</div>
 				</div>
-			</form>
-			<div id="password_change_modal" class="slide_delay1">
-				<form id="change_password_form" action="" method="post" autocomplete="off">
-					<div>
-						<div id="close_modal_button">
-							<i class="far fa-times"></i>
+				{{ form_end(registrationForm) }}
+				<div id="password_change_modal" class="slide_delay1">
+					<form id="change_password_form" action="" method="post" autocomplete="off">
+						<div>
+							<div id="close_modal_button">
+								<i class="far fa-times"></i>
+							</div>
+							<div>Change your password</div>
 						</div>
-						<div>Change your password</div>
-					</div>
-					<div>
-						<label for="mdpClientNew">New Password</label>
-						<input type="password" name="mdpClientNew">
-						<div class="invalid_input fade_in"><?= $mdpClientNewErr; ?></div>
-					</div>
-					<div>
-						<label for="mdpClientNewCheck">Confirm New Password</label>
-						<input type="password" name="mdpClientNewCheck">
-						<div class="invalid_input fade_in"><?= $mdpClientNewCheckErr; ?></div>
-					</div>
-					<input type="submit" value="Validate changes" name="submit_password_changes">
-				</form>
+						<div>
+							<label for="mdpClientNew">New Password</label>
+							<input type="password" name="mdpClientNew">
+							<div class="invalid_input fade_in"><?= $mdpClientNewErr; ?></div>
+						</div>
+						<div>
+							<label for="mdpClientNewCheck">Confirm New Password</label>
+							<input type="password" name="mdpClientNewCheck">
+							<div class="invalid_input fade_in"><?= $mdpClientNewCheckErr; ?></div>
+						</div>
+						<input type="submit" value="Validate changes" name="submit_password_changes">
+					</form>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	{% endif %}
 {% endblock %}
 
+
 {% block body %}
-    <script type="module" src="<?= MODULES ?>/_forms.js"></script>
+	<script type="module" src="js/modules/_forms.js"></script>
 {% endblock %}

@@ -7,10 +7,21 @@
 {% block section %}
         <section id="article_section">
         <h1>About us</h1>
-        <div class="all_articles_container"></div>
+        <div class="all_articles_container">
+        {% for article in articles %}
+			<div>
+                <div class="article_text_container">
+                    <div class="slide_delay1">{{ article.description }}</div>
+                    <div class="slide_delay1">{{ article.nom }}</div>
+                    <div class="slide_delay2">{{ article.contenu }}</div>
+                </div>
+                <img class="slide_delay4" src="{{ article.img }}" alt="Image article">
+			</div>
+		{% endfor %}
+        </div>
     </section>
 {% endblock %}
 
 {% block body %}
-    <script type="module" src="js/modules/_articles.js"></script>
+
 {% endblock %}
