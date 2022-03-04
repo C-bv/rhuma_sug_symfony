@@ -10,9 +10,8 @@
 		<section id="account_section">
 			<h1>Account</h1>
 			<div id="form_container2">
-			{% form_theme registrationForm 'form/form_errors.html.twig' %}
-
-				{{ form_start(registrationForm, {'attr': {'id': 'account_form'}}) }}
+			{% form_theme accountForm 'form/form_errors.html.twig' %}
+				{{ form_start(accountForm, {'attr': {'id': 'account_form'}}) }}
 				<div>
 					<div>User Information</div>
 					<div id="edit_buttons_container">
@@ -21,42 +20,26 @@
 				</div>
 				<div>
 					<div>
-						{{ form_label(registrationForm.nom, 'Last name') }}
-						{{ form_widget(registrationForm.nom, 
-							{'attr': 
-								{'value': app.user.nom }
-							}) 
-						}}
-						{{ form_errors(registrationForm.nom) }}
+						{{ form_label(accountForm.nom, 'Last name') }}
+						{{ form_widget(accountForm.nom) }}
+						{{ form_errors(accountForm.nom) }}
 					</div>
 					<div>
-						{{ form_label(registrationForm.prenom, 'First name') }}
-						{{ form_widget(registrationForm.prenom, 
-							{'attr': 
-								{'value': app.user.prenom }
-							}) 
-						}}
-						{{ form_errors(registrationForm.prenom) }}
+						{{ form_label(accountForm.prenom, 'First name') }}
+						{{ form_widget(accountForm.prenom) }}
+						{{ form_errors(accountForm.prenom) }}
 					</div>
 				</div>
 				<div>
 					<div>
-						{{ form_label(registrationForm.email, 'Email Address') }}
-						{{ form_widget(registrationForm.email, 
-							{'attr': 
-								{'value': app.user.email }
-							}) 
-						}}
-						{{ form_errors(registrationForm.email) }}
+						{{ form_label(accountForm.email, 'Email Address') }}
+						{{ form_widget(accountForm.email) }}
+						{{ form_errors(accountForm.email) }}
 					</div>
 					<div>
-						{{ form_label(registrationForm.tel, 'Phone Number') }}
-						{{ form_widget(registrationForm.tel, 
-							{'attr': 
-								{'value': app.user.tel }
-							}) 
-						}}
-						{{ form_errors(registrationForm.tel) }}
+						{{ form_label(accountForm.tel, 'Phone Number') }}
+						{{ form_widget(accountForm.tel) }}
+						{{ form_errors(accountForm.tel) }}
 					</div>
 				</div>
 				<div id="change_password_button">Change pass</div>
@@ -65,38 +48,27 @@
 				</div>
 				<div>
 					<div>
-						{{ form_label(registrationForm.adresse, 'Address') }}
-						{{ form_widget(registrationForm.adresse, 
-							{'attr': 
-								{'value': app.user.adresse }
-							}) 
-						}}
-						{{ form_errors(registrationForm.adresse) }}
+						{{ form_label(accountForm.adresse, 'Address') }}
+						{{ form_widget(accountForm.adresse) }}
+						{{ form_errors(accountForm.adresse) }}
 					</div>
 				</div>
 				<div>
 					<div>
-						{{ form_label(registrationForm.ville, 'City') }}
-						{{ form_widget(registrationForm.ville, 
-							{'attr': 
-								{'value': app.user.ville }
-							}) 
-						}}
-						{{ form_errors(registrationForm.ville) }}
+						{{ form_label(accountForm.ville, 'City') }}
+						{{ form_widget(accountForm.ville) }}
+						{{ form_errors(accountForm.ville) }}
 					</div>
 					<div>
-						{{ form_label(registrationForm.cp, 'Postal Code') }}
-						{{ form_widget(registrationForm.cp, 
-							{'attr': 
-								{'value': app.user.cp }
-							}) 
-						}}
-						{{ form_errors(registrationForm.cp) }}
+						{{ form_label(accountForm.cp, 'Postal Code') }}
+						{{ form_widget(accountForm.cp) }}
+						{{ form_errors(accountForm.cp) }}
 					</div>
 				</div>
-				{{ form_end(registrationForm) }}
+				{{ form_end(accountForm) }}
 				<div id="password_change_modal" class="slide_delay1">
-					<form id="change_password_form" action="" method="post" autocomplete="off">
+					{% form_theme passwordForm 'form/form_errors.html.twig' %}
+					{{ form_start(passwordForm, {'attr': {'id': 'change_password_form'}}) }}
 						<div>
 							<div id="close_modal_button">
 								<i class="far fa-times"></i>
@@ -104,17 +76,17 @@
 							<div>Change your password</div>
 						</div>
 						<div>
-							<label for="mdpClientNew">New Password</label>
-							<input type="password" name="mdpClientNew">
-							<div class="invalid_input fade_in"><?= $mdpClientNewErr; ?></div>
+							{{ form_label(passwordForm.plainPassword, 'New Password') }}
+							{{ form_widget(passwordForm.plainPassword) }}
+							{{ form_errors(passwordForm.plainPassword) }}
 						</div>
 						<div>
-							<label for="mdpClientNewCheck">Confirm New Password</label>
-							<input type="password" name="mdpClientNewCheck">
-							<div class="invalid_input fade_in"><?= $mdpClientNewCheckErr; ?></div>
+							{# {{ form_label(passwordForm.plainPassword, 'New password') }}
+							{{ form_widget(passwordForm.plainPassword) }}
+							{{ form_errors(passwordForm.plainPassword) }} #}
 						</div>
-						<input type="submit" value="Validate changes" name="submit_password_changes">
-					</form>
+						<input type="submit" value="Validate changes">
+					{{ form_end(passwordForm) }}
 				</div>
 			</div>
 		</section>
@@ -123,5 +95,5 @@
 
 
 {% block body %}
-	<script type="module" src="js/modules/_forms.js"></script>
+	<script type="module" src="../../js/modules/_forms.js"></script>
 {% endblock %}

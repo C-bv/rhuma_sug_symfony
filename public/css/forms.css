@@ -12,6 +12,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */
 }
 form > div {
   position: relative;
@@ -53,6 +55,14 @@ form #sign_up_button:hover,
 form #edit_button:hover,
 form #cancel_button:hover {
   transform: scale(1.1);
+}
+form input::-webkit-outer-spin-button,
+form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+form input[type=number] {
+  -moz-appearance: textfield;
 }
 form #login_input {
   border-color: #D47700 !important;

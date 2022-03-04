@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 
 use App\Form\RegistrationFormType;
+use App\Form\AccountInformationsType;
+use App\Form\PasswordChangeType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -21,7 +23,7 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginFormAuthenticator;
 
 
-class RegistrationController extends AbstractController
+class SecurityController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
@@ -57,10 +59,7 @@ class RegistrationController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         // Redirect to account if logged
@@ -75,22 +74,31 @@ class RegistrationController extends AbstractController
     }
 
     #[Route("/account", name: 'app_account')]
-    public function edit(User $user, Request $request, EntityManagerInterface $entityManager)
+    public function edit(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {        
+        $user = $this->getUser();
+        $AccountInformationsForm = $this->createForm(AccountInformationsType::class, $user);
+        $AccountInformationsForm->handleRequest($request);
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
+        $passwordChangeForm = $this->createForm(PasswordChangeType::class, $user);
+        $passwordChangeForm->handleRequest($request);
+    
+        if ($AccountInformationsForm->isSubmitted() && $AccountInformationsForm->isValid()) {
+            
             $entityManager->persist($user);
             $entityManager->flush();
-
+            
+            return $this->redirectToRoute('app_account');
+        }
+        if ($passwordChangeForm->isSubmitted() && $passwordChangeForm->isValid()) {
+    
+            
             return $this->redirectToRoute('app_account');
         }
         return $this->render('main/account.html.twig', [
             'users' => $user,
-            'registrationForm' => $form->createView()
+            'accountForm' => $AccountInformationsForm->createView(),
+            'passwordForm' => $passwordChangeForm->createView()
         ]);
     }
 }
